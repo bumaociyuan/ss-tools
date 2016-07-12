@@ -1,0 +1,29 @@
+SS相关工具
+
+
+# 支持
+* OS X
+
+# 需要
+* [nodejs](https://nodejs.org/)
+
+# 安装
+```
+$ npm install -g ss-tools
+```
+
+# 用法
+```
+  Usage: ss-tools [option]
+
+  Options:
+
+    -h, --help                 output usage information
+    -V, --version              output the version number
+    -t, --toggle               Toggle your shadowsocks global status.
+    -a, --add-domain <domain>  Add domain to your gfwlist. Do not use -t and -a at the same time.
+```
+
+
+# Lisence
+[MIT](https://github.com/bumaociyuan/ss-tools/blob/master/LICENSE.md)
