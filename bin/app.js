@@ -20,6 +20,7 @@ program
     .version(version)
     .usage('[option]')
     .option('-t, --toggle', 'Toggle your shadowsocks global status.')
+    .option('-u, --update', 'Update your pac from gfwlist.')
     .option('-a, --add-domain <domain>', 'Add domain to your gfwlist. Do not use -t and -a both.')
     .parse(process.argv);
 
@@ -31,6 +32,7 @@ var gfwlistPath = shadowsocksPath + '/gfwlist.js';
 // option
 var inputURL = program.addDomain;
 var toggle = program.toggle;
+var update = program.update;
 
 if (!exit.exited) {
     main();
@@ -38,7 +40,11 @@ if (!exit.exited) {
 
 function main() {
 
-    if (inputURL) {
+    if (update) {
+        updateGFWList()
+    } else if (toggle) {
+        console.log('todo');
+    } else if (inputURL) {
 
         // get host
         var data = url.parse(inputURL);
@@ -47,18 +53,10 @@ function main() {
         if (host != null) {
             // update user-rule
             updateUserRule(host);
-
-            // update gw-shadowsocks
-            updateGW(host)
         } else {
             console.log('Input is not valid');
         }
     }
-}
-
-function updateGW(host) {
-    var gwDomain = 'server=/' + host + '/127.0.0.1#53535\n'
-    fs.appendFile(gwPath, gwDomain, function(err) {});
 }
 
 function updateUserRule(host) {
