@@ -21,7 +21,8 @@ $ npm install -g ss-tools
     -h, --help                 output usage information
     -V, --version              output the version number
     -t, --toggle               Toggle your shadowsocks global status.
-    -a, --add-domain <domain>  Add domain to your gfwlist. Do not use -t and -a at the same time.
+    -u, --update               Update your pac from gfwlist.
+    -a, --add-domain <domain>  Add domain to your gfwlist.
 ```
 
 

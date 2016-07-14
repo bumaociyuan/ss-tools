@@ -21,7 +21,7 @@ program
     .usage('[option]')
     .option('-t, --toggle', 'Toggle your shadowsocks global status.')
     .option('-u, --update', 'Update your pac from gfwlist.')
-    .option('-a, --add-domain <domain>', 'Add domain to your gfwlist. Do not use -t and -a both.')
+    .option('-a, --add-domain <domain>', 'Add domain to your `user-rule.txt` and `gfwlist.js`.')
     .parse(process.argv);
 
 var shadowsocksPath = os.homedir() + '/.ShadowsocksX';
@@ -51,7 +51,7 @@ function main() {
         var host = data.host;
 
         if (host != null) {
-            // update user-rule
+            // update user-rule.txt
             updateUserRule(host);
         } else {
             console.log('Input is not valid');
@@ -62,6 +62,7 @@ function main() {
 function updateUserRule(host) {
     var userRuleDomain = '||' + host + '\n';
     fs.appendFile(userRulePath, userRuleDomain, function(err) {
+        console.log('Add ' + host + ' to your user-rule.ext');
         updateGFWList();
     });
 }
@@ -70,7 +71,7 @@ function updateGFWList() {
     var installedGenpac = exec('command -v genpac >/dev/null 2>&1').code;
     if (installedGenpac == 0) {
         var result = exec('genpac --gfwlist-url=https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt --user-rule-from=' + userRulePath + ' -p "SOCKS5 127.0.0.1:1080" -o ' + gfwlistPath).output;
-        console.log('Success');
+        console.log('Success update');
     } else {
         // plz install genpac 
         console.log('Please run `pip install genpac` before');
