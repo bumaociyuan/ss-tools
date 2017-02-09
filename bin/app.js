@@ -24,7 +24,7 @@ program
     .option('-a, --add-domain <domain>', 'Add domain to your `user-rule.txt` and `gfwlist.js`.')
     .parse(process.argv);
 
-var shadowsocksPath = os.homedir() + '/.ShadowsocksX-NG';
+var shadowsocksPath = os.homedir() + '/.ShadowsocksX';
 var userRulePath = shadowsocksPath + '/user-rule.txt';
 var gwPath = shadowsocksPath + '/gw-shadowsocks.dnslist';
 var gfwlistPath = shadowsocksPath + '/gfwlist.js';
