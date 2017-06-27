@@ -4,6 +4,8 @@ SS相关工具
 # 支持
 * OS X
 
+[![asciicast](https://asciinema.org/a/111012.png)](https://asciinema.org/a/111012)
+
 # 需要
 * [nodejs](https://nodejs.org/)
 
